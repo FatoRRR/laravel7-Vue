@@ -13,4 +13,22 @@ mix.webpackConfig({
             'TEMPLATE': path.resolve(__dirname, 'resources/js/components/templates'),
         }
     },
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            sourceMap: true,
+                            // Provide path to the file with resources
+                            resources: './resources/sass/app.scss',
+                        },
+                    },
+                ],
+            },
+        ],
+    },
 });
