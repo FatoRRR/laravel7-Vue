@@ -1,1 +1,26 @@
-//
+$primary-font-color: #F5F5F5;
+$secondary-font-color: #202060;
+
+$primary-background-color: #424250;
+$secondary-background-color: #363640;
+
+$navigation-background-color: #272730;
+
+$modal-background-color: #363640;
+
+$button-primary-color: #272730;
+
+$font-family: 'Spartan';
+
+html, body, #app {
+  background: linear-gradient(to bottom, $primary-background-color 25%, $secondary-background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $primary-font-color;
+  font-size: 16px;
+  height: 100%;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+  background-attachment: fixed;
+}
