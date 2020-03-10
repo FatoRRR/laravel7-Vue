@@ -5,6 +5,12 @@ Vue.use(VueRouter)
 export default new VueRouter({
     history: true,
     mode: 'history',
-    routes: [],
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: () => import('PAGE/Home'),
+        },
+    ],
 });
 
