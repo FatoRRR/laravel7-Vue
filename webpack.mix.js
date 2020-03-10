@@ -13,7 +13,4 @@ mix.webpackConfig({
             'TEMPLATE': path.resolve(__dirname, 'resources/js/components/templates'),
         }
     },
-    module: {
-        rules: []
-    }
 });
