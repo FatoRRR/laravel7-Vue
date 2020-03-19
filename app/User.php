@@ -27,10 +27,18 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    // function person()
-    // {
-    //     return $this->belongsTo(Person::class);
-    // }
+    function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
+    function chats()
+    {
+        return $this->hasManyThrough(
+            Chat::class,
+            ChatParticipant::class,
+        );
+    }
 
     public function getJWTIdentifier()
     {
