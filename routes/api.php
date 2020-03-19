@@ -14,6 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::prefix('user')->group(function () {
+        Route::prefix('chat')->group(function () {
+            Route::prefix('store')->group(function () {
+                Route::post('message', 'ChatController@storeMessage');
+            });
+            Route::get('channels', 'ChatController@index');
+        });
+    });
+});
+
+Route::prefix('chat')->group(function () {
+});
+
+
+Route::prefix('auth')->group(function () {
+    Route::post('register', 'AuthController@register');
+    Route::post('login', 'AuthController@login');
+    Route::get('refresh', 'AuthController@refresh');
+    Route::group(['middleware' => 'auth:api'], function(){
+        Route::get('user', 'AuthController@user');
+        Route::post('logout', 'AuthController@logout');
+    });
 });
