@@ -18,5 +18,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.material-icons {
+  user-select: none;
+  cursor: pointer;
+}
 </style>

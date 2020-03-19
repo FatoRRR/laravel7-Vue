@@ -56,8 +56,7 @@ export default {
   }
 
   &-header {
-    padding-top: 22px;
-    padding-bottom: 9px;
+    padding: 22px 0px;
     letter-spacing: 1.2px;
 
     &.border {
@@ -69,8 +68,6 @@ export default {
   &-content {
     font-size: .75em;
     font-weight: 200;
-    padding-top: 7px;
-    padding-bottom: 22px;
     letter-spacing: 1.5px;
     color: rgba($color: $primary-font-color, $alpha: .7);
   }

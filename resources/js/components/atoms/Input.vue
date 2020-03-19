@@ -1,7 +1,7 @@
 <template>
   <div
     class="input"
-    :class="[outlined ? 'outlined' : 'filled']"
+    :class="[outlined ? 'outlined' : 'filled', {'disabled': disabled}]"
   >
     <icon v-if="icon !== ''" class="icon" :icon="icon"/>
     <input
@@ -10,11 +10,13 @@
       :autocomplete="autocomplete ? 'on' : 'off'"
       :autocorrect="autocorrect ? 'on' : 'off'"
       :spellcheck="spellcheck ? 'on' : 'off'"
+      :autofocus="autofocus"
       :disabled="disabled"
       :value="value"
       :type="type"
       @focus="inputFocused = true"
       @blur="inputFocused = false"
+      @keypress.prevent.enter="$emit('enter')"
       @input="$emit('input', $event.target.value); $emit('change')"
     />
     <div
@@ -25,7 +27,7 @@
     </div>
     <span class="error">{{error}}</span>
     <span
-      v-if="limit !== 0"
+      v-if="limit !== 0 && error === ''"
       class="limit"
       :class="{'exceeded': value.length > limit}"
     >{{ value.length }} / {{ limit }}</span>
@@ -95,12 +97,17 @@ export default {
 
 <style lang="scss" scoped>
 .input {
+  user-select: none;
   height: 56px;
   font-size: 16px;
   margin-bottom: 24px;
   align-items: center;
   display: inline-flex;
   box-sizing: border-box;
+
+  input {
+    width: 100%;
+  }
 
   .error {
     position: absolute;

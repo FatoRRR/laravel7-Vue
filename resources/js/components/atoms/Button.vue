@@ -32,6 +32,7 @@ export default {
 <style lang="scss" scoped>
 .button {
   height: 36px;
+  user-select: none;
   line-height: 36px;
   cursor: pointer;
   min-width: 64px;
